@@ -6,12 +6,22 @@ import About from './components/About'
 import App from './App'
 // 导入 vue router
 import VueRouter from 'vue-router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+
 // 告诉vue使用vue-router路由组件
 Vue.use(VueRouter)
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
-  { path: '/', component: Hello },
+  { path: '/', component: Hello,children:[
+    { path: '/about', component: About,name:'首页' },
+    { path: '/about', component: About,name:'订单管理' },
+    { path: '/about', component: About,name:'增值税申报管理' },
+    { path: '/about', component: About,name:'个税申报管理' },
+    { path: '/about', component: About,name:'企业信息管理' }
+  ] },
   { path: '/about', component: About }
 ]
 
