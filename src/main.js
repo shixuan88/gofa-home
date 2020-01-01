@@ -2,6 +2,13 @@
 import Vue from 'vue'
 import Hello from './components/Hello'
 import About from './components/About'
+import DeclarationManager from './modules/DeclarationManager'
+import InfoManager from './modules/InfoManager'
+import SingleDeclarationManager from './modules/SingleDeclarationManager'
+import OrderManager from './modules/OrderManager'
+import Home from './modules/Home'
+
+
 // 导入 App 组件
 import App from './App'
 // 导入 vue router
@@ -15,17 +22,14 @@ Vue.use(ElementUI)
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
-  {
-    path: '/',
+  { path: '/',
     component: Hello,
     children: [
-      { path: '/about', component: About, name: '首页' },
-      { path: '/mange', component: About, name: '订单管理' },
-      { path: '/about', component: About, name: '增值税申报管理' },
-      { path: '/about', component: About, name: '个税申报管理' },
-      { path: '/about', component: About, name: '企业信息管理' }
-    ] },
-  { path: '/about', component: About }
+      { path: '/Home', component: Home, name: '首页' },
+      { path: '/OrderManager', component: OrderManager, name: '订单管理' },
+      { path: '/DeclarationManager', component: DeclarationManager, name: '增值税申报管理' },
+      { path: '/SingleDeclarationManager', component: SingleDeclarationManager, name: '个税申报管理' },
+      { path: '/InfoManager', component: InfoManager, name: '企业信息管理' }] },
 ]
 
 // 创建路由器实例，并且传入`routes`变量作为路由。
