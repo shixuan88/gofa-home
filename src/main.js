@@ -1,5 +1,7 @@
 // 导入vue实例
 import Vue from 'vue'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import Hello from './components/Hello'
 import About from './components/About'
 // 导入 App 组件
@@ -12,6 +14,7 @@ Vue.use(ElementUI)
 
 // 告诉vue使用vue-router路由组件
 Vue.use(VueRouter)
+Vue.use(ElementUI)
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
