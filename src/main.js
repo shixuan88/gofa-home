@@ -1,7 +1,5 @@
 // 导入vue实例
 import Vue from 'vue'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import Hello from './components/Hello'
 import About from './components/About'
 // 导入 App 组件
@@ -10,7 +8,6 @@ import App from './App'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
 
 // 告诉vue使用vue-router路由组件
 Vue.use(VueRouter)
