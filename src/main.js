@@ -1,6 +1,7 @@
 // 导入vue实例
 import Vue from 'vue'
-import Hello from './components/HelloWorld'
+import Hello from './components/Hello'
+import About from './components/About'
 // 导入 App 组件
 import App from './App'
 // 导入 vue router
@@ -10,7 +11,8 @@ Vue.use(VueRouter)
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
-  { path: '/', component: Hello }
+  { path: '/', component: Hello },
+  { path: '/about', component: About }
 ]
 
 // 创建路由器实例，并且传入`routes`变量作为路由。
