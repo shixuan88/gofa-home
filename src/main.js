@@ -19,11 +19,11 @@ const routes = [
     path: '/',
     component: Hello,
     children: [
-      { path: '/about', component: About, name: '首页' },
+      { path: '/', component: About, name: '首页' },
       { path: '/mange', component: About, name: '订单管理' },
-      { path: '/about', component: About, name: '增值税申报管理' },
-      { path: '/about', component: About, name: '个税申报管理' },
-      { path: '/about', component: About, name: '企业信息管理' }
+      { path: '/order', component: About, name: '增值税申报管理' },
+      { path: '/declear', component: About, name: '个税申报管理' },
+      { path: '/message', component: About, name: '企业信息管理' }
     ] },
   { path: '/about', component: About }
 ]
