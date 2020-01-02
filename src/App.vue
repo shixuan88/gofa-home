@@ -33,11 +33,11 @@ export default {
         </el-menu>
       </el-aside>
       <el-main id="main">
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
   <!--路由管道标签，任何符合某一路由(route)信息的组件都会在这个标签内展示出来 -->
-  <router-view></router-view>
   </div>
 </template>
 <!-- css格式 -->
