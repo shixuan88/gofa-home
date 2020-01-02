@@ -1,6 +1,5 @@
 // 导入vue实例
 import Vue from 'vue'
-import Hello from './components/Hello'
 import About from './components/About'
 // 导入 App 组件
 import App from './App'
@@ -9,6 +8,7 @@ import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import OrderManager from './modules/Order/OrderManager'
 // 告诉vue使用vue-router路由组件
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -17,11 +17,11 @@ const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
   {
     path: '/',
-    component: Hello,
+    component: OrderManager,
     children: [
       { path: '/', component: About, name: '首页' },
-      { path: '/mange', component: About, name: '订单管理' },
-      { path: '/order', component: About, name: '增值税申报管理' },
+      { path: '/order', component: OrderManager, name: '订单管理' },
+      { path: '/manager', component: About, name: '增值税申报管理' },
       { path: '/declear', component: About, name: '个税申报管理' },
       { path: '/message', component: About, name: '企业信息管理' }
     ] },
