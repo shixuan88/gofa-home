@@ -48,9 +48,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #eee;
+  height: 100%;
 }
 body, html {
   margin: 0;
+  height: 100%;
+}
+.el-container {
+  height: 100%;
 }
 .el-header, .el-footer {
     background-color: #B3C0D1;
@@ -80,5 +86,9 @@ body, html {
   }
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+  #main {
+    margin: 10px;
+    background-color: #fff
   }
 </style>
