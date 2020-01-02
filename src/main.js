@@ -1,25 +1,28 @@
 // 导入vue实例
 import Vue from 'vue'
-import Hello from './components/Hello'
+import Index from './modules/Index'
 import About from './components/About'
 // 导入 App 组件
 import App from './App'
 // 导入 vue router
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
+import echarts from 'echarts'
 import 'element-ui/lib/theme-chalk/index.css'
 
 // 告诉vue使用vue-router路由组件
 Vue.use(VueRouter)
 Vue.use(ElementUI)
+
+Vue.prototype.$echarts = echarts
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
   {
     path: '/',
-    component: Hello,
+    component: Index,
     children: [
-      { path: '/', component: About, name: '首页' },
+      { path: '/', component: Index, name: '首页' },
       { path: '/mange', component: About, name: '订单管理' },
       { path: '/order', component: About, name: '增值税申报管理' },
       { path: '/declear', component: About, name: '个税申报管理' },

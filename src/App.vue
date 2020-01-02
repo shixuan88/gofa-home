@@ -88,7 +88,7 @@ body, html {
     line-height: 320px;
   }
   #main {
-    margin: 10px;
-    background-color: #fff
+    margin: 20px;
+    background-color: #eee
   }
 </style>
