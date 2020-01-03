@@ -1,6 +1,11 @@
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    handleOpen () {
+      console.log('====')
+    }
+  }
 }
 
 </script>
@@ -11,11 +16,12 @@ export default {
     <el-header>Header</el-header>
     <el-container>
       <el-aside width="200px">
-        <el-menu :default-active="defaultActive"
-         router
+        <el-menu :default-active="$route.path"
+         :router="true"
          class="el-menu-vertical-demo"
          @open="handleOpen"
          :collapse="isCollapse"
+                 :unique-opened="true"
         >
           <template v-for="route in $router.options.routes"
             v-if="route.children && route.children.length"
@@ -33,7 +39,10 @@ export default {
         </el-menu>
       </el-aside>
       <el-main id="main">
-        <router-view></router-view>
+        <router-view
+          keep-alive
+          transition="fade"
+          transition-mode='out-in'></router-view>
       </el-main>
     </el-container>
   </el-container>
