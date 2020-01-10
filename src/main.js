@@ -8,6 +8,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import echarts from 'echarts'
+import { nSQL } from "nano-sql";
 import 'element-ui/lib/theme-chalk/index.css'
 
 import OrderManager from './modules/Order/OrderManager'
@@ -16,20 +17,15 @@ Vue.use(VueRouter)
 Vue.use(ElementUI)
 
 Vue.prototype.$echarts = echarts
+Vue.prototype.$sql=nSQL;
 // 定义路由表
 const routes = [
   // 将根URL加入到路由表并声明对应Hello组件.
-  {
-    path: '/',
-    component: Index,
-    children: [
-      { path: '/', component: Index, name: '首页' },
-      { path: '/order', component: OrderManager, name: '订单管理' },
-      { path: '/manager', component: About, name: '增值税申报管理' },
-      { path: '/declear', component: About, name: '个税申报管理' },
-      { path: '/message', component: About, name: '企业信息管理' }
-    ] },
-  { path: '/about', component: About }
+  { path: '/', component: Index, name: '首页' },
+  { path: '/order', component: OrderManager, name: '订单管理' },
+  { path: '/manager', component: resolve => require(['@/modules/Order/TaxManager'], resolve), name: '增值税申报管理' },
+  { path: '/declear', component: resolve => require(['@/modules/Order/PersonalTaxManager'], resolve), name: '个税申报管理' },
+  { path: '/user', component: resolve => require(['@/modules/Order/InfomationManager'], resolve), name: '管理员账号管理' }
 ]
 
 // 创建路由器实例，并且传入`routes`变量作为路由。

@@ -13,7 +13,9 @@ export default {
 <template>
   <div id="app">
     <el-container>
-    <el-header>Header</el-header>
+    <el-header>
+      <div class="title">区块链应税协查系统</div>
+    </el-header>
     <el-container>
       <el-aside width="200px">
         <el-menu :default-active="$route.path"
@@ -24,17 +26,15 @@ export default {
                  :unique-opened="true"
         >
           <template v-for="route in $router.options.routes"
-            v-if="route.children && route.children.length"
+            v-if="$router.options.routes.length"
           >
-            <template v-for="item in route.children" >
-              <el-menu-item
-              :key="route.path + '/' + item.path"
-              :index="item.path"
+            <el-menu-item
+              :key="route.path + '/' + route.path"
+              :index="route.path"
               >
-                <i :class="el-icon-menu"></i>
-                <span slot="title">{{ item.name }}</span>
-              </el-menu-item>
-            </template>
+              <i :class="'el-icon-'+(route.icon || 'menu')"></i>
+              <span slot="title">{{ route.name }}</span>
+            </el-menu-item>
           </template>
         </el-menu>
       </el-aside>
@@ -68,8 +68,8 @@ body, html {
   height: 100%;
 }
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: rgb(0,159,250);
+    color: #fff;
     text-align: center;
     line-height: 60px;
   }
@@ -81,11 +81,12 @@ body, html {
     line-height: 200px;
   }
   .el-main {
-    background-color: #E9EEF3;
+    background-color: #f6f6f6;
     color: #333;
     text-align: center;
     line-height: 160px;
   }
+  .el-menu-item{text-align: left;}
   body > .el-container {
     margin-bottom: 40px;
   }
@@ -96,8 +97,6 @@ body, html {
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
   }
-  #main {
-    margin: 20px;
-    background-color: #eee
-  }
+
+  .title{text-align:left;}
 </style>
