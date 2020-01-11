@@ -27,6 +27,23 @@
       height="100%"
       :data="tableData"
       >
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="detail">
+            <el-form-item label="商品名称">
+              <span>{{ props.row.name }}</span>
+            </el-form-item>
+            <el-form-item label="发货地">
+              <span>{{ props.row.address }}</span>
+            </el-form-item>
+            <el-form-item label="订单图片">
+              <template v-for="img in props.row.imgs">
+                <img :src="'assets/'+img">
+              </template>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
       <el-table-column v-for="col in columns"
                        :prop="col.key"
                        :label="col.text"
@@ -91,7 +108,8 @@
         fee:10.1,
         pdate:'2019-11-12 13:40:58',
         fdate:'2019-11-12 14:40:58',
-        sdate:'2019-11-12 17:40:58'
+        sdate:'2019-11-12 17:40:58',
+        imgs:['1.jpg','2.jpg','3.jpg']
       },
         {
           orderno: '20190503121176',
@@ -261,4 +279,5 @@
     text-align: center;
     color: #2c3e50;
   }
+  .detail .el-form-item {border-right:1px solid #eee;padding-right:100px;}
 </style>
