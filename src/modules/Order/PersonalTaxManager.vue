@@ -62,6 +62,14 @@
         console.log(rows);
       });
    },
+  methods:{
+    onSubmit(){
+      var me=this,name=me.$data.formData.bname;
+      var loading =me.$loading({text:'加载中'})
+      setTimeout(function(){loading.close();},500);
+      me.search=name;
+    }
+  },
   data()
   {
     return {

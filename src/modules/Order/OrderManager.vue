@@ -29,16 +29,29 @@
       >
       <el-table-column type="expand">
         <template slot-scope="props">
-          <el-form label-position="left" inline class="detail">
-            <el-form-item label="商品名称">
-              <span>{{ props.row.name }}</span>
+          <el-form inline class="detail" v-if="props.row.orderno==='20190503121176'">
+            <el-form-item label="收益类型 ：">
+              <span>平台分佣</span>
             </el-form-item>
-            <el-form-item label="发货地">
+            <el-form-item label="平台方 ：">
+              <span>{{ props.row.bname }}</span>
+            </el-form-item>
+            <el-form-item label="订单图片">
+              <template v-for="img in props.row.imgs">
+                <img :src="'static/'+img">
+              </template>
+            </el-form-item>
+          </el-form>
+          <el-form label-position="left" inline class="detail" v-else>
+            <el-form-item label="商品名称 ：">
+              <span>护肤品</span>
+            </el-form-item>
+            <el-form-item label="发货地 ：">
               <span>{{ props.row.address }}</span>
             </el-form-item>
             <el-form-item label="订单图片">
               <template v-for="img in props.row.imgs">
-                <img :src="'assets/'+img">
+                <img :src="'static/'+img">
               </template>
             </el-form-item>
           </el-form>
@@ -73,6 +86,14 @@
         console.log(rows);
       });
    },
+  methods:{
+    onSubmit(){
+      var me=this,name=me.$data.formData.bname;
+      var loading =me.$loading({text:'加载中'})
+      setTimeout(function(){loading.close();},500);
+      me.search=name;
+    }
+  },
   data()
   {
     return {
@@ -85,10 +106,11 @@
         {key: 'cardno', text: '银行卡号',width:'180'},
         {key: 'price', text: '订单金额'},
         {key: 'status', text: '支付状态'},
-        {key: 'date', text: '订单完成时间',width:'180'},
+//        {key: 'date', text: '订单完成时间',width:'180'},
         {key: 'fee', text: '平台服务费'},
+        {key: 'amount', text: '结算金额'},
         {key: 'pdate', text: '发包时间',width:'180'},
-        {key: 'fdate', text: '订单完成时间',width:'180'},
+        {key: 'fdate', text: '接包完成时间',width:'180'},
         {key: 'sdate', text: '结算时间',width:'180'}
       ],
       tableData: [{
@@ -103,6 +125,7 @@
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333,
         price:128944.31,
+        amount:128934.21,
         status:'已完成',
         date:'2019-11-12 13:40:58',
         fee:10.1,
@@ -123,12 +146,14 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:8944.31,
+          amount:8942.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:2.1,
           pdate:'2019-11-12 13:40:58',
           fdate:'2019-11-12 14:40:58',
-          sdate:'2019-11-12 17:40:58'
+          sdate:'2019-11-12 17:40:58',
+          imgs:['4.jpg','5.jpg','6.jpg']
         },
         {
           orderno: '20190503121189',
@@ -142,6 +167,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:1128944.31,
+          amount:1128223.16,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:721.15,
@@ -161,6 +187,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:128944.31,
+          amount:128934.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:10.1,
@@ -180,6 +207,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:128944.31,
+          amount:128934.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:10.1,
@@ -199,6 +227,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:28944.31,
+          amount:28934.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:10.1,
@@ -218,6 +247,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:28944.31,
+          amount:28934.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:10.1,
@@ -237,6 +267,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:28944.31,
+          amount:28934.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:10.1,
@@ -256,6 +287,7 @@
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333,
           price:42944.31,
+          amount:42823.21,
           status:'已完成',
           date:'2019-11-12 13:40:58',
           fee:121.1,
